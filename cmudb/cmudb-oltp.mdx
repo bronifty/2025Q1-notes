@@ -52,3 +52,52 @@
 - intersect
 - difference
 - cartesian product
+
+### sql
+
+- non-aggregated values must appear in group by
+- having filters aggregate computation
+- redirect output to new table
+- order by column number (order by 2)
+- offset (skip first n rows)
+- window functions
+
+### window functions
+
+- performs a calc across a set of tuples related to current tuple wihtout collapsing them into a single tuple to support running totals, ranks and moving averages
+- like an aggregation but tuples are not grouped into a single output tuple
+
+```sql
+select func-name(...) over(...) from table-name
+```
+
+- func-name is the aggregation or special function
+- over is how to slice up data which can also sort tuples
+
+```sql
+select *, row_number() over(order by 1) from table-name
+```
+
+- special window functions
+
+  - row_number()
+  - rank()
+  - lag()
+  - lead()
+  - first_value()
+  - last_value()
+
+- over keyword specifies how to group together tuples when computing the function
+- partition by to specify group
+
+```sql
+select *, row_number() over(partition by col1 order by col2) from table-name
+```
+
+- find student with second highest gpa
+
+```sql
+select * from (
+  select *, rank() over (partition by cid order by grade asc) as rank from enrolled
+) as ranking where ranking.rank = 2
+```

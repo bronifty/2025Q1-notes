@@ -98,6 +98,6 @@ select *, row_number() over(partition by col1 order by col2) from table-name
 
 ```sql
 select * from (
-  select *, rank() over (partition by cid order by grade asc) as rank from enrolled
+  select *, rank() over (partition by cid order by grade desc) as rank from enrolled
 ) as ranking where ranking.rank = 2
 ```

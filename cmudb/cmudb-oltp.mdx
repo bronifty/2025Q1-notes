@@ -3,4 +3,24 @@
 logical schema (erd)
 physical schema (tuple/struct)
 
-.
+db engine functional components
+
+- storage manager
+- query processor
+- transaction manager
+
+storage manager
+
+- provides interface between data storage and app queries
+- interacts with the OS file system
+- includes auth, transaction, file, buffer
+- implements several data structures for the physical implementation including
+  - files
+  - dictionary
+  - indices
+
+query processor
+
+- ddl interpreter records statements in dictionary
+- dml compiler converts sql into a query plan
+- query eval engine executes compiler output instructions

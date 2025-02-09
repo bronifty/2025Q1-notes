@@ -1,15 +1,16 @@
 # CMU DB OLTP
 
-logical schema (erd)
-physical schema (tuple/struct)
+### logical schema (erd)
 
-db engine functional components
+### physical schema (tuple/struct)
+
+### db engine functional components
 
 - storage manager
 - query processor
 - transaction manager
 
-storage manager
+### storage manager
 
 - provides interface between data storage and app queries
 - interacts with the OS file system
@@ -19,26 +20,35 @@ storage manager
   - dictionary
   - indices
 
-query processor
+### query processor
 
 - ddl interpreter records statements in dictionary
 - dml compiler converts sql into a query plan
 - query eval engine executes compiler output instructions
 
-transaction manager
+### transaction manager
 
 - ensures consistency
 - controls concurrency
 
-architecture
+### architecture
 
 - 2-tier hits db directly
 - 3-tier has app calling db
 
-dba tasks
+### dba tasks
 
 - schema definition
 - storage and access definition
 - schema modification
 - authorization management
 - mx backups disk space upgrade monitoring
+
+### relational algebra
+
+- select
+- project
+- union
+- intersect
+- difference
+- cartesian product
